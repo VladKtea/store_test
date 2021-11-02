@@ -17,7 +17,7 @@ driver.find_element_by_xpath("//input[@name='login']").click()
 driver.find_element_by_link_text("Shop").click()
 driver.execute_script("window.scrollBy(0, 200);")
 driver.find_element_by_xpath("//div[@id='content']/ul/li[3]/a").click()
-some_element= WebDriverWait(driver, 20).until(
+WebDriverWait(driver, 20).until(
     EC.text_to_be_present_in_element((By.XPATH, "//h1[@class='product_title entry-title']"), "HTML5 Forms"))
 time.sleep(1)
 driver.find_element_by_link_text("Shop").click()
@@ -52,10 +52,12 @@ element = driver.find_element_by_css_selector(".price >ins").text
 assert "₹450.00" in element
 time.sleep(1)
 driver.find_element_by_css_selector(".images >a").click()
-some_element= WebDriverWait(driver, 20).until(
+WebDriverWait(driver, 20).until(
    EC.element_to_be_clickable((By.CSS_SELECTOR, ".pp_close")))
 driver.find_element_by_css_selector(".pp_close").click()
 time.sleep(2)
+driver.find_element_by_link_text("My Account").click()
+driver.find_element_by_link_text("Sign out").click()
 driver.find_element_by_link_text("Shop").click()
 driver.execute_script("window.scrollBy(0, 600);")
 driver.find_element_by_xpath("//a[@data-product_id='181']").click()
@@ -65,9 +67,9 @@ assert "280.00" in elent
 elem = driver.find_element_by_xpath("//span[@class='cartcontents']").text
 assert "1 Item" in elem
 driver.find_element_by_xpath("//ul[@id='main-nav']/li[6]/a").click()
-somement= WebDriverWait(driver, 20).until(
+WebDriverWait(driver, 20).until(
     EC.text_to_be_present_in_element((By.XPATH, "//tr[@class='cart-subtotal']/td/span"), "280.00"))
-slement= WebDriverWait(driver, 20).until(
+WebDriverWait(driver, 20).until(
     EC.text_to_be_present_in_element((By.XPATH, "//tr[@class='order-total']/td/strong/span"), "294.00"))
 driver.find_element_by_xpath("//tbody/tr[1]/td[1]/a").click()
 time.sleep(2)
@@ -96,17 +98,15 @@ time.sleep(2)
 element = driver.find_element_by_css_selector(".woocommerce-error >li").text
 assert "Please enter a coupon code" in element
 time.sleep(2)
-driver.find_element_by_link_text("My Account").click()
-driver.find_element_by_link_text("Sign out").click()
 driver.find_element_by_link_text("Shop").click()
 driver.execute_script("window.scrollBy(0, 600);")
 driver.find_element_by_xpath("//a[@data-product_id='182']").click()
 time.sleep(2)
 driver.find_element_by_xpath("//ul[@id='main-nav']/li[6]/a").click()
-some_element = WebDriverWait(driver, 20).until(
+WebDriverWait(driver, 20).until(
    EC.element_to_be_clickable((By.CSS_SELECTOR, ".wc-proceed-to-checkout > a")))
 driver.find_element_by_css_selector(".wc-proceed-to-checkout > a").click()
-some_element = WebDriverWait(driver, 30).until(
+WebDriverWait(driver, 30).until(
    EC.text_to_be_present_in_element((By.XPATH, "//div[@class='woocommerce-billing-fields']/h3"), "Billing Details"))
 driver.find_element_by_id("billing_first_name").send_keys("Dahlia")
 driver.find_element_by_id("billing_last_name").send_keys("Foley")
@@ -126,8 +126,8 @@ driver.execute_script("window.scrollBy(0, 300);")
 time.sleep(2)
 driver.find_element_by_id("payment_method_cheque").click()
 driver.find_element_by_id("place_order").click()
-some = WebDriverWait(driver, 20).until(
+WebDriverWait(driver, 20).until(
    EC.text_to_be_present_in_element((By.CSS_SELECTOR, ".woocommerce-thankyou-order-received"), "Thank you. Your order has been received."))
-some = WebDriverWait(driver, 20).until(
+WebDriverWait(driver, 20).until(
    EC.text_to_be_present_in_element((By.XPATH, "//table/tfoot/tr[3]/td"), "Check Payments"))
 driver.quit()
